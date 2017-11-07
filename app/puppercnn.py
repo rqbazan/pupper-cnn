@@ -13,19 +13,16 @@ try:
     from keras.preprocessing import image    
     from keras.applications.resnet50 import preprocess_input
     from extract_bottleneck_features import *    
+    from response import Response
 except ImportError as e:
     print(e)
     sys.exit(1)
-
-ROOT_PATH = r'C:/Users/sciadmin/Documents/PupperCNN/Data'
-dog_train_data_directory = os.path.join(ROOT_PATH, "dogImages/train")
 
 with open("dog_names") as f:
     dog_names = f.readlines()
 dog_names = [name.strip() for name in dog_names]
 
 face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_alt.xml')
-print("face_cascade", face_cascade)
 
 """
     Iniciando el modelo de la ResNet50 alimentado por la base de conocimiento en image-net
@@ -57,7 +54,7 @@ def ResNet50_predict_labels(img_path):
 
 def dog_detector(img_path):
     prediction = ResNet50_predict_labels(img_path)
-    return ((prediction <= 268) & (prediction >= 151)) 
+    return bool((prediction <= 268) and (prediction >= 151)) 
 
 def face_detector(img_path):
     img = cv2.imread(img_path)
@@ -82,28 +79,19 @@ def ResNet50_predict_breed(img_path):
     predicted_vector = ResNet_model.predict(bottleneck_feature)
     breed = dog_names[np.argmax(predicted_vector)]
     if dog_detector(img_path) == True:
-        return print("The breed of dog is a {}".format(breed))
+        print("The breed of dog is a {}".format(breed))    
     else:
-        return print("If this person were a dog, the breed would be a {}".format(breed))
+        print("If this person were a dog, the breed would be a {}".format(breed))
+    return breed
 
 def predict_breed(img_path):
-    isDog = dog_detector(img_path)
-    isPerson = face_detector(img_path)
-    if isDog:
+    response = Response()
+    response.isDog = dog_detector(img_path)
+    response.isHuman = face_detector(img_path)
+    if response.isDog:
         print("Detected a dog")
-        breed = ResNet50_predict_breed(img_path)
-        return breed
-    if isPerson:
+        response.breed = ResNet50_predict_breed(img_path)
+    elif response.isHuman:
         print("Detected a human face")
-        breed = ResNet50_predict_breed(img_path)
-        return breed
-    else:
-        print("No human face or dog detected")
-
-def main():
-    predict_breed('images/1.jpg')
-    predict_breed('images/2.jpg')
-
-
-if __name__ == '__main__':
-    main()
+        response.breed = ResNet50_predict_breed(img_path)
+    return response
