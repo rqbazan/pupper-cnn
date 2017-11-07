@@ -9,16 +9,15 @@ try:
     from keras.utils import np_utils
     import matplotlib.pyplot as plt
     from keras.applications.resnet50 import ResNet50
-    from keras.preprocessing import image                 
+    from keras.preprocessing import image              
     from keras.applications.resnet50 import preprocess_input, decode_predictions 
     from PIL import ImageFile
 except ImportError as e:
     print(e)
     sys.exit(1)
 
-ImageFile.LOAD_TRUNCATED_IMAGES = True  
-
-ROOT_PATH = "D:\PupperCNN\Data"
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+ROOT_PATH = r'C:/Users/sciadmin/Documents/PupperCNN/Data'
 
 dog_test_data_directory = os.path.join(ROOT_PATH, "dogImages/test")
 dog_train_data_directory = os.path.join(ROOT_PATH, "dogImages/train")
