@@ -1,7 +1,6 @@
 import os
 import uuid
 import puppercnn
-print("CARGO PUPPERCNN")
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 from response import Response
