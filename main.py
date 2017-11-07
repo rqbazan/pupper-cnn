@@ -11,9 +11,12 @@ try:
     from keras.applications.resnet50 import ResNet50
     from keras.preprocessing import image                 
     from keras.applications.resnet50 import preprocess_input, decode_predictions 
+    from PIL import ImageFile
 except ImportError as e:
     print(e)
     sys.exit(1)
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True  
 
 ROOT_PATH = "D:\PupperCNN\Data"
 
@@ -54,7 +57,6 @@ def face_detector(img_path):
     faces = face_cascade.detectMultiScale(gray)
     return len(faces) > 0
 
-
 """
     Iniciando el modelo de la ResNet50 alimentado por la base de conocimiento en image-net
 """
@@ -86,6 +88,15 @@ def ResNet50_predict_labels(img_path):
 def dog_detector(img_path):
     prediction = ResNet50_predict_labels(img_path)
     return ((prediction <= 268) & (prediction >= 151)) 
+
+"""
+    Construyendo la CNN desde 0
+"""
+
+train_tensors = paths_to_tensor(train_files).astype('float32')/255
+valid_tensors = paths_to_tensor(valid_files).astype('float32')/255
+test_tensors = paths_to_tensor(test_files).astype('float32')/255
+
 
 def main():
     pass
