@@ -333,7 +333,7 @@ print('Percentage of dogs correctly classified as dogs: {}%'.format(percentage))
 
 
 from PIL import ImageFile                            
-ImageFile.LOAD_TRUNCATED_IMAGES = True                 
+ImageFile.LOAD_TRUNCATED_IMAGES = True      
 
 # pre-process the data for Keras
 train_tensors = paths_to_tensor(train_files).astype('float32')/255
