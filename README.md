@@ -30,3 +30,8 @@
 * Keras: `pip install keras` o `git clone https://github.com/fchollet/keras.git && cd keras && python setup.py install `
 * TensorFlow: `pip install tensorflow` o `pip install tensorflow-gpu`
 * [OpenCV](https://www.scivision.co/install-opencv-python-windows/)
+
+### Dependencias API
+
+* Flask: `pip install flask`
+* Flask Restful: `pip install flask_restful` o `git clone https://github.com/flask-restful/flask-restful && cd flask-restful && python setup.py install`
