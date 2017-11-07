@@ -46,7 +46,7 @@ class Upload(Resource):
 
 if __name__ == '__main__':
     host = 'localhost'
-    port = 3000
+    port = 8000
     app = Flask(__name__)
 
     api = Api(app)
