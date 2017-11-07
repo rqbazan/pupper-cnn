@@ -9,7 +9,7 @@
 #### Teoria
 
 * [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
-* [TensorFlow - Datacamp Article](https://www.datacamp.com/community/tutorials/tensorflow-tutorial)
+* [TensorFlow - DataCamp Article](https://www.datacamp.com/community/tutorials/tensorflow-tutorial)
 * [What's a tensor?](https://www.youtube.com/watch?v=f5liqUk0ZTw) :movie_camera:
 
 #### Deploy
@@ -18,7 +18,7 @@
 * [GPU VM in Azure for Deep Learning](http://www.vickyfu.com/2017/01/gpu-vm-in-azure-for-deep-learning/)
 * [Keras with GPU on Amazon EC2 – a step-by-step instruction](https://hackernoon.com/keras-with-gpu-on-amazon-ec2-a-step-by-step-instruction-4f90364e49ac)
 
-#### Projectos
+#### Proyectos
 
 * [Dog Breed Classifier](https://github.com/jamesrequa/Dog-Breed-Classifier)
 
