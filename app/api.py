@@ -32,11 +32,7 @@ class Upload(Resource):
                 print('saving:', temp_filepath)
                 file.save(temp_filepath)
                 response = puppercnn.predict_breed(temp_filepath)
-                print(response)
                 return jsonify(vars(response))
-                # return jsonify({
-                #     "result": True
-                # })
             else:
                 raise Exception('File extension not allowed')
         except Exception as e:
