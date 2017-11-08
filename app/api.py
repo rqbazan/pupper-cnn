@@ -15,7 +15,7 @@ def extract_file_ext(filename):
     return file_extension
 
 class Upload(Resource):
-    allowed_file_exts = ('.jpg','.png', '.jpge')
+    allowed_file_exts = ('.jpg','.png', '.jpeg')
     fail_response = Response()
 
     @staticmethod
