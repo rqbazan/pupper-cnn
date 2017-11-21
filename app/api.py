@@ -24,6 +24,7 @@ class Upload(Resource):
 
     def post(self):
         try:
+            temp_filepath = None
             file = request.files['image']
             if file and self.allowed_file(file.filename):
                 temp_filename = str(uuid.uuid4()) + extract_file_ext(file.filename)
@@ -46,7 +47,7 @@ class Upload(Resource):
                 print(e)
 
 host = '0.0.0.0'
-port = 3030
+port = 8000
 app = Flask(__name__)
 
 api = Api(app)
