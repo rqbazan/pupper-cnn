@@ -39,16 +39,16 @@ class Upload(Resource):
             return jsonify(vars(Upload.fail_response))
         finally:
             try:
-                print('removing:', temp_filepath)
-                os.remove(temp_filepath)
+	    	if temp_filepath:
+	            print('removing:', temp_filepath)
+	            os.remove(temp_filepath)
             except Exception as e:
                 print(e)
 
-if __name__ == '__main__':
-    host = 'localhost'
-    port = 8000
-    app = Flask(__name__)
+host = '0.0.0.0'
+port = 3030
+app = Flask(__name__)
 
-    api = Api(app)
-    api.add_resource(Upload, '/api/upload')
-    app.run(host=host, port=port)
+api = Api(app)
+api.add_resource(Upload, '/api/upload')
+app.run(port=port, host=host)
