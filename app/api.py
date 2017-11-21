@@ -10,12 +10,14 @@ TEMP_PATH = "temp/"
 if not os.path.exists(TEMP_PATH):
     os.makedirs(TEMP_PATH)
 
+
 def extract_file_ext(filename):
     _, file_extension = os.path.splitext(filename)
     return file_extension
 
+
 class Upload(Resource):
-    allowed_file_exts = ('.jpg','.png', '.jpeg')
+    allowed_file_exts = ('.jpg', '.png', '.jpeg')
     fail_response = Response()
 
     @staticmethod
@@ -40,9 +42,9 @@ class Upload(Resource):
             return jsonify(vars(Upload.fail_response))
         finally:
             try:
-	    	if temp_filepath:
-	            print('removing:', temp_filepath)
-	            os.remove(temp_filepath)
+                if temp_filepath:
+                    print('removing:', temp_filepath)
+                    os.remove(temp_filepath)
             except Exception as e:
                 print(e)
 
