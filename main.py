@@ -1,6 +1,6 @@
 import os
 import uuid
-from logging as log
+import logging as log
 import puppercnn
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
