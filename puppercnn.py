@@ -80,8 +80,10 @@ def ResNet50_predict_breed(img_path):
     predicted_vector = ResNet_model.predict(bottleneck_feature)
     breed = dog_names[np.argmax(predicted_vector)]
     if dog_detector(img_path) == True:
+        print("The breed of dog is a {}".format(breed))
         log.info("The breed of dog is a {}".format(breed))
     else:
+        print("If this person were a dog, the breed would be a {}".format(breed))
         log.info("If this person were a dog, the breed would be a {}".format(breed))
     return breed
 
@@ -90,9 +92,11 @@ def predict_breed(img_path):
     response.isDog = dog_detector(img_path)
     response.isHuman = face_detector(img_path)
     if response.isDog:
+        print("Detected a dog")
         log.info("Detected a dog")
         response.breed = ResNet50_predict_breed(img_path)
     elif response.isHuman:
+        print("Detected a human face")
         log.info("Detected a human face")
         response.breed = ResNet50_predict_breed(img_path)
     return response

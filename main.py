@@ -34,6 +34,7 @@ class Upload(Resource):
             if file and self.allowed_file(file.filename):
                 temp_filename = str(uuid.uuid4()) + extract_file_ext(file.filename)
                 temp_filepath = os.path.join(TEMP_PATH, temp_filename)
+                print('saving: {}'.format(temp_filepath))
                 log.debug('saving: {}'.format(temp_filepath))
                 file.save(temp_filepath)
                 response = puppercnn.predict_breed(temp_filepath)
@@ -46,6 +47,7 @@ class Upload(Resource):
         finally:
             try:
                 if temp_filepath:
+                    print('removing: {}'.format(temp_filepath))
                     log.debug('removing: {}'.format(temp_filepath))
                     os.remove(temp_filepath)
             except Exception as e:
